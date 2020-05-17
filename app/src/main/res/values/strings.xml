@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">Guide for Winner</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
