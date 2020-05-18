@@ -30,7 +30,6 @@ class MainFragment : Fragment() {
         viewDataBinding = FragmentMainBinding.inflate(inflater, container, false).apply {
             viewmodel = viewModel
         }
-        setHasOptionsMenu(true)
         return viewDataBinding.root
     }
 

@@ -13,11 +13,24 @@
             type="com.example.guidefordreamwinnersoccer2020.MainViewModel" />
 
     </data>
-<FrameLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".bookList.MainFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@color/white"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:title="@string/app_name"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
@@ -42,5 +55,5 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/list_item_book"/>
 
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
