@@ -10,7 +10,7 @@
     <!-- colorAccent is used as the default value for colorControlActivated,
          which is used to tint widgets -->
     <color name="progress_background">#ffe5e2e7</color>
-    <color name="colorAccent">#8BC34A</color>
+<!--    <color name="colorAccent">#8BC34A</color>-->
     <color name="blue_progress">#2196F3</color>
     <color name="white">#ffffff</color>
     <color name="light_gray_background">#eeeeee</color>
@@ -27,5 +27,5 @@
     <color name="download_button_tint">#616161</color>
     <color name="gray_ripple_pressed">#e0e0e0</color>
     <color name="gray_ripple_focused">#e0e0e0</color>
-<!--    <color name="colorAccent">#03DAC5</color>-->
+    <color name="colorAccent">#03DAC5</color>
 </resources>

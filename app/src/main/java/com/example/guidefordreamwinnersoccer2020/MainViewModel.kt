@@ -13,6 +13,9 @@ class MainViewModel : ViewModel() {
         get() = _splashState
     private val _splashState = MutableLiveData<Event<SplashState>>()
 
+    private val _navigateToDetailEvent = MutableLiveData<Event<Book>>()
+    val navigateToDetailEvent : LiveData<Event<Book>> = _navigateToDetailEvent
+
     private val _items = MutableLiveData<List<Book>>().apply {
         value = listOf(
             Book(imageId = R.drawable.foot1),
@@ -30,6 +33,10 @@ class MainViewModel : ViewModel() {
             delay(500)
             _splashState.postValue(Event(SplashState.MainActivity()))
         }
+    }
+
+    fun openBook(book:Book){
+        _navigateToDetailEvent.postValue(Event(book))
     }
 }
 

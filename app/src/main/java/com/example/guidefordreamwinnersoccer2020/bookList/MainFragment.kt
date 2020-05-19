@@ -5,27 +5,27 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.guidefordreamwinnersoccer2020.EventObserver
 import com.example.guidefordreamwinnersoccer2020.MainViewModel
 import com.example.guidefordreamwinnersoccer2020.R
 import com.example.guidefordreamwinnersoccer2020.databinding.FragmentMainBinding
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment() {
 
-    private lateinit var viewDataBinding: FragmentMainBinding
-    private lateinit var listAdapter: TasksAdapter
-    val viewModel : MainViewModel by viewModel()
+    lateinit var viewDataBinding: FragmentMainBinding
+    lateinit var listAdapter: TasksAdapter
+    val viewModel: MainViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        requireActivity().window.apply {
-            addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-            clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
+        removeFullScreen()
         (activity as AppCompatActivity).supportActionBar?.show()
         viewDataBinding = FragmentMainBinding.inflate(inflater, container, false).apply {
             viewmodel = viewModel
@@ -36,21 +36,8 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
-
+        viewModel.navigateToDetailEvent.observe(viewLifecycleOwner,EventObserver{
+            findNavController().navigate(R.id.action_mainFragment_to_bookDetailFragment)
+        })
     }
-
-    private fun initAdapter() {
-        val viewModel = viewDataBinding.viewmodel
-        if (viewModel != null) {
-            listAdapter = TasksAdapter(viewModel)
-            viewDataBinding.recyclerViewBooks.adapter = listAdapter
-            viewDataBinding.recyclerViewBooks.layoutManager = GridLayoutManager(requireContext(), 2)
-            viewModel.items.observe(viewLifecycleOwner, Observer {
-                listAdapter.submitList(it)
-            })
-        } else {
-    //            Timber.w("ViewModel not initialized when attempting to set up adapter.")
-        }
-    }
-
 }

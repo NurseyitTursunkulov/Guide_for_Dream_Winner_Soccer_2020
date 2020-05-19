@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:onClick="@{() -> viewmodel.openBook(task)}"
             android:foreground="@drawable/book_selector"
             app:cardCornerRadius="8dp">
 
