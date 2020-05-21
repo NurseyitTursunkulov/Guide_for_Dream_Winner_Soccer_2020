@@ -27,4 +27,9 @@ class BookDetailFragment : Fragment() {
         return viewDataBinding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val content = viewModel.navigateToDetailEvent.value?.peekContent()?.body
+        content_text_view.text = content
+    }
 }

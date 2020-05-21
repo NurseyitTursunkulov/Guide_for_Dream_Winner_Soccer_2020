@@ -29,7 +29,7 @@ class MainApp : Application() {
     }
     private val offlineWeatherApp: Module = module {
         viewModel{
-            MainViewModel()
+            MainViewModel(this@MainApp)
         }
     }
 }
