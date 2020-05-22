@@ -3,11 +3,12 @@ package com.example.guidefordreamwinnersoccer2020.bookList
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 
 
-fun MainFragment.removeFullScreen() {
+fun Fragment.removeFullScreen() {
     requireActivity().window.apply {
         addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
         clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);

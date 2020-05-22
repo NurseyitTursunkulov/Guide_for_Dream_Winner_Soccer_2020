@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookDetailFragment"
-        android:name="com.example.guidefordreamwinnersoccer2020.BookDetailFragment"
+        android:name="com.example.guidefordreamwinnersoccer2020.detail.BookDetailFragment"
         android:label="fragment_book_detail"
         tools:layout="@layout/fragment_book_detail" />
 </navigation>
