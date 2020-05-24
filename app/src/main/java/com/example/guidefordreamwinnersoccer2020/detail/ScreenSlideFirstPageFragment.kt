@@ -8,7 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.guidefordreamwinnersoccer2020.MainViewModel
 import com.example.guidefordreamwinnersoccer2020.databinding.FragmentBookDetailBinding
+import kotlinx.android.synthetic.main.detail_viewpager.*
 import kotlinx.android.synthetic.main.fragment_book_detail.*
+import kotlinx.android.synthetic.main.fragment_book_detail.content_text_view
+import kotlinx.android.synthetic.main.fragment_book_detail.toolbar
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ScreenSlideFirstPageFragment (val content:String) : Fragment() {
@@ -29,5 +32,8 @@ class ScreenSlideFirstPageFragment (val content:String) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         content_text_view.text = content
+        toolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed();
+        }
     }
 }

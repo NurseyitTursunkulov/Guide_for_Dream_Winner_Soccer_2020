@@ -36,12 +36,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         return listOf(
             Book(title = getString(R.string.book1title), body = getString(R.string.book1body),imageId = R.drawable.foot1),
             Book(title = getString(R.string.book_1_title),body = getString(R.string.book_1_body), imageId = R.drawable.foot2),
-            Book(title = getString(R.string.book_2_title),body = getString(R.string.book_2_body), imageId = R.drawable.foot3),
-            Book(title = getString(R.string.book_3_title),body = getString(R.string.book_3_body), imageId = R.drawable.foot4),
-            Book(title = getString(R.string.book_4_title),body = getString(R.string.book_4_body), imageId = R.drawable.foot5),
-            Book(title = getString(R.string.book_5_title),body = getString(R.string.book_5_body), imageId = R.drawable.foot1),
-            Book(title = getString(R.string.book_6_title),body = getString(R.string.book_6_body), imageId = R.drawable.foot1),
-            Book(title = getString(R.string.book_7_title),body = getString(R.string.book_7_body), imageId = R.drawable.foot1)
+            Book(title = getString(R.string.book_2_title),body = getString(R.string.book_2_body), imageId = R.drawable.image3),
+            Book(title = getString(R.string.book_3_title),body = getString(R.string.book_3_body), imageId = R.drawable.image5),
+            Book(title = getString(R.string.book_4_title),body = getString(R.string.book_4_body), imageId = R.drawable.image4),
+            Book(title = getString(R.string.book_5_title),body = getString(R.string.book_5_body), imageId = R.drawable.image7),
+            Book(title = getString(R.string.book_6_title),body = getString(R.string.book_6_body), imageId = R.drawable.image6),
+            Book(title = getString(R.string.book_7_title),body = getString(R.string.book_7_body), imageId = R.drawable.image2)
         )
     }
 }

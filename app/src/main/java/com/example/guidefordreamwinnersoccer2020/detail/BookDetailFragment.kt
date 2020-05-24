@@ -72,6 +72,7 @@ class BookDetailFragment : Fragment() {
             } else {
                 // Otherwise, select the previous step.
                 pager.currentItem = pager.currentItem - 1
+                this@BookDetailFragment.findNavController().navigateUp()
             }
         }
 
