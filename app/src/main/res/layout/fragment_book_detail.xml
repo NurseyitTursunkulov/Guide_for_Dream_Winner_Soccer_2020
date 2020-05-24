@@ -48,12 +48,24 @@
 
                     <ImageView
                         android:layout_width="match_parent"
+                        android:id="@+id/image"
                         android:layout_height="match_parent"
                         android:contentDescription="content_description_media"
                         android:fitsSystemWindows="true"
                         android:scaleType="centerCrop"
                         app:imageResource="@{bookInfo.imageId}"
                         tools:src="@drawable/foot3" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="88dp"
+                    android:background="@drawable/scrim_top"
+                    app:layout_collapseMode="pin"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="88dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/scrim_bottom"/>
 
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar"

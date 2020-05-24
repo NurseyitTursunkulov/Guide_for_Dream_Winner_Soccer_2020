@@ -82,11 +82,18 @@ class BookDetailFragment : Fragment() {
         override fun getItemCount(): Int =
             viewModel.navigateToDetailEvent.value?.peekContent()?.listOfContentPerPage?.size ?: 1
 
-        override fun createFragment(position: Int): Fragment =
-            ScreenSlidePageFragment(
+        override fun createFragment(position: Int): Fragment {
+            val content =
                 viewModel.navigateToDetailEvent.value?.peekContent()?.listOfContentPerPage?.get(
                     position
-                )?:""
-            )
+                ) ?: ""
+            return when(position){
+                0-> ScreenSlideFirstPageFragment(content)
+                else->ScreenSlidePageFragment(
+                    content
+                )
+            }
+
+        }
     }
 }
