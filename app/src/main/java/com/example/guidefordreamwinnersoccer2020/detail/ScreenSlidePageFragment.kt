@@ -15,7 +15,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.util.*
 
 
-class ScreenSlidePageFragment(val content:String) : Fragment() {
+class ScreenSlidePageFragment(val content: String) : Fragment() {
     val viewModel: MainViewModel by sharedViewModel()
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,11 +35,18 @@ class ScreenSlidePageFragment(val content:String) : Fragment() {
             requireActivity().onBackPressed();
         }
         val images =
-            intArrayOf(R.drawable.foot1, R.drawable.foot2, R.drawable.foot3
-                , R.drawable.foot4
-                , R.drawable.foot5
-                , R.drawable.image1
-                , R.drawable.image2
+            intArrayOf(
+                R.drawable.foot5 //ok
+                , R.drawable.image1// ok
+                , R.drawable.image2, //ok
+                R.drawable.foot12, //ok
+                R.drawable.foot13,// ok
+                R.drawable.foot15,// ok
+                R.drawable.foot16,// ok
+                R.drawable.foot18,
+                R.drawable.foot20,
+                R.drawable.foot21,
+                R.drawable.foot19
             )
         val rand = Random()
         imageView.load(images[rand.nextInt(images.size)])

@@ -41,7 +41,6 @@
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleMarginBottom="28dp"
                 app:expandedTitleMarginStart="15dp"
-                app:maxLines="3"
                 app:expandedTitleTextAppearance="@style/TextAppearance.App.CollapsingToolbar.Expanded"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
                 app:statusBarScrim="?attr/colorPrimaryVariant"
@@ -51,7 +50,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:id="@+id/image"
-                        android:layout_height="200dp"
+                        android:layout_height="match_parent"
                         android:contentDescription="content_description_media"
                         android:fitsSystemWindows="true"
                         android:scaleType="centerCrop"
