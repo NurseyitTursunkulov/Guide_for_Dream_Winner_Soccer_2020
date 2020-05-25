@@ -24,7 +24,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         viewModelScope.launch {
-            delay(500)
+            delay(3000)
             _splashState.postValue(Event(SplashState.MainActivity()))
         }
     }

@@ -7,11 +7,15 @@
     android:background="@color/colorAccent"
     tools:context=".SplashFragment">
 
-    <ImageView
+
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imageView"
+        app:lottie_autoPlay="true"
+
+        app:lottie_loop="true"
+        app:lottie_fileName="17378-soccer-loading.json"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_football"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -33,13 +37,13 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
-        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="32dp"
+        android:visibility="invisible"
         app:cardCornerRadius="8dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,9 +81,9 @@
                 android:layout_below="@id/textview_about_heading"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="2dp"
-                android:text="@string/book1body"
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
+                android:text="@string/book1body"
                 android:textColor="@color/text_color_primary_dark"
                 android:textSize="20sp" />
 
