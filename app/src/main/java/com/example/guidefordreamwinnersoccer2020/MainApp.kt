@@ -16,13 +16,10 @@ class MainApp : Application() {
     override fun onCreate() {
         super.onCreate()
         // Creating an extended library configuration.
-        // Creating an extended library configuration.
         val config =
             YandexMetricaConfig.newConfigBuilder("91c8db8c-7ee6-4756-aace-0ecb5c8b4c10").build()
         // Initializing the AppMetrica SDK.
-        // Initializing the AppMetrica SDK.
         YandexMetrica.activate(applicationContext, config)
-        // Automatic tracking of user activity.
         // Automatic tracking of user activity.
         YandexMetrica.enableActivityAutoTracking(this)
         startKoin {
@@ -36,11 +33,12 @@ class MainApp : Application() {
             androidFileProperties()
 
             // module list
-            modules(offlineWeatherApp)
+            modules(appModules)
         }
     }
-    private val offlineWeatherApp: Module = module {
-        viewModel{
+
+    private val appModules: Module = module {
+        viewModel {
             MainViewModel(this@MainApp)
         }
     }

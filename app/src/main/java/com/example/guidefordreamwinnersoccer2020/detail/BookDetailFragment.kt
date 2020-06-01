@@ -1,16 +1,7 @@
 package com.example.guidefordreamwinnersoccer2020.detail
 
-import android.graphics.Paint
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.style.StyleSpan
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.view.ViewTreeObserver
-import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -26,22 +17,15 @@ import kotlinx.android.synthetic.main.fragment_book_detail.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
-class BookDetailFragment : Fragment() {
+class BookDetailFragment : Fragment(R.layout.activity_screen_slide) {
+
     val viewModel: MainViewModel by sharedViewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        removeFullScreen()
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
-        (activity as AppCompatActivity).supportActionBar?.show()
-        return inflater.inflate(R.layout.activity_screen_slide, container, false)
-
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        removeFullScreen()
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        (activity as AppCompatActivity).supportActionBar?.show()
         val book = viewModel.navigateToDetailEvent.value?.peekContent()
         pager.adapter = ScreenSlidePagerAdapter(requireActivity())
 

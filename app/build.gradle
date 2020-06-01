@@ -72,4 +72,6 @@ dependencies {
     implementation 'com.yandex.android:mobmetricalib:3.13.1'
     // Optionally. Play Install Referrer library.
     implementation 'com.android.installreferrer:installreferrer:1.0'
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 }

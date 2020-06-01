@@ -1,10 +1,13 @@
 package com.example.guidefordreamwinnersoccer2020
 
 import android.app.Application
-import android.provider.Settings
-import android.provider.Settings.Global.getString
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.guidefordreamwinnersoccer2020.bookList.Book
+import com.example.guidefordreamwinnersoccer2020.util.Event
+import com.example.guidefordreamwinnersoccer2020.util.getString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -25,12 +28,20 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     init {
         viewModelScope.launch {
             delay(3000)
-            _splashState.postValue(Event(SplashState.MainActivity()))
+            _splashState.postValue(
+                Event(
+                    SplashState.MainActivity()
+                )
+            )
         }
     }
 
-    fun openBook(book:Book){
-        _navigateToDetailEvent.postValue(Event(book))
+    fun openBook(book:Book) {
+        _navigateToDetailEvent.postValue(
+            Event(
+                book
+            )
+        )
     }
     private fun getBooksList(): List<Book> {
         return listOf(

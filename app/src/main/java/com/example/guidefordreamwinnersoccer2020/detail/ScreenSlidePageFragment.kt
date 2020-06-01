@@ -1,9 +1,7 @@
 package com.example.guidefordreamwinnersoccer2020.detail
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import coil.api.load
@@ -15,24 +13,18 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.util.*
 
 
-class ScreenSlidePageFragment(val content: String) : Fragment() {
+class ScreenSlidePageFragment(val content: String) : Fragment(R.layout.detail_viewpager) {
+
     val viewModel: MainViewModel by sharedViewModel()
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        removeFullScreen()
-        (activity as AppCompatActivity).supportActionBar?.show()
-        return inflater.inflate(R.layout.detail_viewpager, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        removeFullScreen()
+        (activity as AppCompatActivity).supportActionBar?.show()
         content_text_view.text = content
         toolbar.title = viewModel.navigateToDetailEvent.value?.peekContent()?.title
         toolbar.setNavigationOnClickListener {
-            requireActivity().onBackPressed();
+            requireActivity().onBackPressed()
         }
         val images =
             intArrayOf(
