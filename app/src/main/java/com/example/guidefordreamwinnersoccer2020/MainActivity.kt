@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.androidsx.rateme.RateMeDialog
+import com.androidsx.rateme.RateMeDialogTimer
 import com.example.guidefordreamwinnersoccer2020.util.initAdds
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
@@ -33,5 +35,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.interstitialAd = mInterstitialAd
+
+        RateMeDialogTimer.onStart(this)
+        if (RateMeDialogTimer.shouldShowRateDialog(this, 1, 2)) {
+            RateMeDialog.Builder(packageName, "")
+                .setHeaderBackgroundColor(resources.getColor(R.color.colorPrimary))
+                .setBodyBackgroundColor(resources.getColor(R.color.dialog_body))
+                .showAppIcon(R.mipmap.ic_launcher)
+                .enableFeedbackByEmail("")
+                .setRateButtonBackgroundColor(resources.getColor(R.color.dialog_button))
+                .build()
+                .show(fragmentManager, "plain-dialog")
+        }
+
     }
 }
