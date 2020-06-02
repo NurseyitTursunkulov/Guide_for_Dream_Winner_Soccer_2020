@@ -1,6 +1,7 @@
 package com.example.guidefordreamwinnersoccer2020.bookList
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,13 @@ class MainFragment : Fragment() {
             EventObserver {
                 findNavController().navigate(R.id.action_mainFragment_to_bookDetailFragment)
             })
-
+        viewModel.showAdvertEvent.observe(viewLifecycleOwner, EventObserver {
+            if (viewModel.interstitialAd.isLoaded) {
+                viewModel.interstitialAd.show()
+            } else {
+                Log.d("Nurs", "The interstitial wasn't loaded yet.")
+            }
+        })
         initAdapter()
     }
 

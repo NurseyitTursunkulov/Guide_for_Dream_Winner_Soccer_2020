@@ -1,6 +1,7 @@
 package com.example.guidefordreamwinnersoccer2020
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -31,6 +32,13 @@ class SplashFragment : Fragment(R.layout.splash_fragment) {
                     }
                 }
             })
+        viewModel.showAdvertEvent.observe(viewLifecycleOwner, EventObserver {
+            if (viewModel.interstitialAd.isLoaded) {
+                viewModel.interstitialAd.show()
+            } else {
+                Log.d("Nurs", "The interstitial wasn't loaded yet.")
+            }
+        })
     }
 
     override fun onResume() {
