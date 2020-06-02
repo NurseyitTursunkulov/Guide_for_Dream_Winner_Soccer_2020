@@ -60,7 +60,7 @@ class TasksAdapter(private val viewModel: MainViewModel) :
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (position == 0)
+        return if (position == 0 && viewModel.showAdvertState)
             BANNER_AD_VIEW_TYPE else MENU_ITEM_VIEW_TYPE
     }
 

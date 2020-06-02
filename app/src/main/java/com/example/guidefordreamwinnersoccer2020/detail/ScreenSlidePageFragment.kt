@@ -3,11 +3,13 @@ package com.example.guidefordreamwinnersoccer2020.detail
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import coil.api.load
 import com.example.guidefordreamwinnersoccer2020.MainViewModel
 import com.example.guidefordreamwinnersoccer2020.R
+import com.example.guidefordreamwinnersoccer2020.bookList.getAdRequest
 import com.example.guidefordreamwinnersoccer2020.util.EventObserver
 import com.example.guidefordreamwinnersoccer2020.util.removeFullScreen
 import kotlinx.android.synthetic.main.detail_viewpager.*
@@ -36,6 +38,11 @@ class ScreenSlidePageFragment(private val content: String, private val position:
                 Log.d("Nurs", "slidepage The interstitial wasn't loaded yet.")
             }
         })
+        if (viewModel.showAdvertState) {
+            ad_view_detail_pager.visibility = VISIBLE
+            val adRequest = getAdRequest()
+            ad_view_detail_pager.loadAd(adRequest)
+        }
         val images =
             intArrayOf(
                 R.drawable.foot5 //ok

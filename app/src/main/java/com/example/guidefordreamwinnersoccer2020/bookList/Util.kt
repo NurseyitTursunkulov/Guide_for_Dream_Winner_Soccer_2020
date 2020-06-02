@@ -17,7 +17,8 @@ fun MainFragment.initAdapter() {
         listAdapter = TasksAdapter(viewModel)
         viewDataBinding.recyclerViewBooks.adapter = listAdapter
         viewDataBinding.recyclerViewBooks.layoutManager = GridLayoutManager(requireContext(), 2)
-        makeOneSpanForAdView()
+        if (viewModel.showAdvertState)
+            makeOneSpanForAdView()
         viewModel.items.observe(viewLifecycleOwner, Observer {
             listAdapter.submitList(it)
         })
