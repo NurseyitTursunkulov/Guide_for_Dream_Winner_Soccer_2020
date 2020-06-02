@@ -36,7 +36,7 @@ class SplashFragment : Fragment(R.layout.splash_fragment) {
             if (viewModel.interstitialAd.isLoaded) {
                 viewModel.interstitialAd.show()
             } else {
-                Log.d("Nurs", "The interstitial wasn't loaded yet.")
+                Log.d("Nurs", "splash The interstitial wasn't loaded yet.")
             }
         })
     }

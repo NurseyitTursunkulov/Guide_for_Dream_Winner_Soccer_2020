@@ -26,13 +26,9 @@ class BookDetailFragment : Fragment(R.layout.activity_screen_slide) {
         removeFullScreen()
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
         (activity as AppCompatActivity).supportActionBar?.show()
-        val book = viewModel.navigateToDetailEvent.value?.peekContent()
         pager.adapter = ScreenSlidePagerAdapter(requireActivity())
+        initPendingIndicatorView()
 
-        pageIndicatorView.count =
-            book?.listOfContentPerPage?.size ?: 1 // specify total count of indicators
-
-        pageIndicatorView.selection = 1
 
         pager.registerOnPageChangeCallback(
             object : ViewPager2.OnPageChangeCallback() {
@@ -75,7 +71,8 @@ class BookDetailFragment : Fragment(R.layout.activity_screen_slide) {
             return when(position){
                 0-> ScreenSlideFirstPageFragment(content)
                 else->ScreenSlidePageFragment(
-                    content
+                    content,
+                    position
                 )
             }
 

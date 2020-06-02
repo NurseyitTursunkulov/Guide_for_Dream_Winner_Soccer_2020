@@ -43,7 +43,7 @@ class MainFragment : Fragment() {
             if (viewModel.interstitialAd.isLoaded) {
                 viewModel.interstitialAd.show()
             } else {
-                Log.d("Nurs", "The interstitial wasn't loaded yet.")
+                Log.d("Nurs", "mainfrag The interstitial wasn't loaded yet.")
             }
         })
         initAdapter()

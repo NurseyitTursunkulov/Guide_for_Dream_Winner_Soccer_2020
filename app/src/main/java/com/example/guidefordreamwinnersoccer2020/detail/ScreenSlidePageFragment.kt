@@ -1,19 +1,22 @@
 package com.example.guidefordreamwinnersoccer2020.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import coil.api.load
 import com.example.guidefordreamwinnersoccer2020.MainViewModel
 import com.example.guidefordreamwinnersoccer2020.R
+import com.example.guidefordreamwinnersoccer2020.util.EventObserver
 import com.example.guidefordreamwinnersoccer2020.util.removeFullScreen
 import kotlinx.android.synthetic.main.detail_viewpager.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.util.*
 
 
-class ScreenSlidePageFragment(val content: String) : Fragment(R.layout.detail_viewpager) {
+class ScreenSlidePageFragment(private val content: String, private val position: Int) :
+    Fragment(R.layout.detail_viewpager) {
 
     val viewModel: MainViewModel by sharedViewModel()
 
@@ -26,6 +29,13 @@ class ScreenSlidePageFragment(val content: String) : Fragment(R.layout.detail_vi
         toolbar.setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
+        viewModel.showAdvertEvent.observe(viewLifecycleOwner, EventObserver {
+            if (viewModel.interstitialAd.isLoaded) {
+                viewModel.interstitialAd.show()
+            } else {
+                Log.d("Nurs", "slidepage The interstitial wasn't loaded yet.")
+            }
+        })
         val images =
             intArrayOf(
                 R.drawable.foot5 //ok
@@ -42,5 +52,14 @@ class ScreenSlidePageFragment(val content: String) : Fragment(R.layout.detail_vi
             )
         val rand = Random()
         imageView.load(images[rand.nextInt(images.size)])
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("Nurs", "onResume pos $position")
+        if (position % 2 == 0) {
+            Log.d("Nurs", "pos if $position")
+            viewModel.showAdvert()
+        }
     }
 }

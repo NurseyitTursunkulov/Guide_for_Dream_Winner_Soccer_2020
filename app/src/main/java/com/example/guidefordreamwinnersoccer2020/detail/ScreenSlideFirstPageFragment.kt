@@ -1,6 +1,7 @@
 package com.example.guidefordreamwinnersoccer2020.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.guidefordreamwinnersoccer2020.MainViewModel
 import com.example.guidefordreamwinnersoccer2020.databinding.FragmentBookDetailBinding
-import kotlinx.android.synthetic.main.detail_viewpager.*
+import com.example.guidefordreamwinnersoccer2020.util.EventObserver
 import kotlinx.android.synthetic.main.fragment_book_detail.*
-import kotlinx.android.synthetic.main.fragment_book_detail.content_text_view
-import kotlinx.android.synthetic.main.fragment_book_detail.toolbar
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ScreenSlideFirstPageFragment (val content:String) : Fragment() {
@@ -21,6 +20,7 @@ class ScreenSlideFirstPageFragment (val content:String) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel.showAdvert()
         (activity as AppCompatActivity).supportActionBar?.show()
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
         viewDataBinding = FragmentBookDetailBinding.inflate(inflater, container, false).apply {
@@ -33,7 +33,15 @@ class ScreenSlideFirstPageFragment (val content:String) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         content_text_view.text = content
         toolbar.setNavigationOnClickListener {
-            requireActivity().onBackPressed();
+            requireActivity().onBackPressed()
         }
+        viewModel.showAdvertEvent.observe(viewLifecycleOwner, EventObserver {
+            if (viewModel.interstitialAd.isLoaded) {
+                viewModel.interstitialAd.show()
+            } else {
+                Log.d("Nurs", "first The interstitial wasn't loaded yet.")
+            }
+        })
+
     }
 }

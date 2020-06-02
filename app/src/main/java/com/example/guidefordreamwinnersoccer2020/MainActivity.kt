@@ -1,6 +1,7 @@
 package com.example.guidefordreamwinnersoccer2020
 
 import android.os.Bundle
+import android.util.Log
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.guidefordreamwinnersoccer2020.util.initAdds
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             loadAd(AdRequest.Builder().build())
             adListener = object : AdListener() {
                 override fun onAdClosed() {
+                    Log.d("Nurs", "onAdClosed")
                     mInterstitialAd.loadAd(AdRequest.Builder().build())
                 }
             }
