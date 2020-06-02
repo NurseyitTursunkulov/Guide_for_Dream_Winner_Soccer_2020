@@ -11,7 +11,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.guidefordreamwinnersoccer2020.MainViewModel
 import com.example.guidefordreamwinnersoccer2020.R
-import com.example.guidefordreamwinnersoccer2020.bookList.removeFullScreen
+import com.example.guidefordreamwinnersoccer2020.util.removeFullScreen
 import kotlinx.android.synthetic.main.activity_screen_slide.*
 import kotlinx.android.synthetic.main.fragment_book_detail.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

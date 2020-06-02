@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.guidefordreamwinnersoccer2020.util.EventObserver
 import com.example.guidefordreamwinnersoccer2020.util.divideTextToParts
+import com.example.guidefordreamwinnersoccer2020.util.initAdvert
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -16,6 +17,7 @@ class SplashFragment : Fragment(R.layout.splash_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.adView = initAdvert(requireContext())
         val content = viewModel.items.value
         content?.let { bookList ->
             divideTextToParts(bookList)

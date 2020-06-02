@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.guidefordreamwinnersoccer2020.bookList.Book
 import com.example.guidefordreamwinnersoccer2020.util.Event
 import com.example.guidefordreamwinnersoccer2020.util.getString
+import com.google.android.gms.ads.AdView
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -16,6 +17,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         get() = _splashState
     private val _splashState = MutableLiveData<Event<SplashState>>()
 
+    var adView: AdView? = null
     private val _navigateToDetailEvent = MutableLiveData<Event<Book>>()
     val navigateToDetailEvent : LiveData<Event<Book>> = _navigateToDetailEvent
 
@@ -27,7 +29,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         viewModelScope.launch {
-            delay(3000)
+            delay(1000)
             _splashState.postValue(
                 Event(
                     SplashState.MainActivity()

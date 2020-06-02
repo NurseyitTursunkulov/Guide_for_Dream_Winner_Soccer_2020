@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import coil.api.load
 import com.example.guidefordreamwinnersoccer2020.MainViewModel
 import com.example.guidefordreamwinnersoccer2020.R
-import com.example.guidefordreamwinnersoccer2020.bookList.removeFullScreen
+import com.example.guidefordreamwinnersoccer2020.util.removeFullScreen
 import kotlinx.android.synthetic.main.detail_viewpager.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.util.*

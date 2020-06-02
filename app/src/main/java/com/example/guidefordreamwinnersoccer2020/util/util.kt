@@ -1,11 +1,26 @@
 package com.example.guidefordreamwinnersoccer2020.util
 
 import android.app.Application
+import android.content.Context
 import android.view.ViewTreeObserver
+import android.view.WindowManager
+import androidx.fragment.app.Fragment
 import com.example.guidefordreamwinnersoccer2020.MainViewModel
 import com.example.guidefordreamwinnersoccer2020.SplashFragment
 import com.example.guidefordreamwinnersoccer2020.bookList.Book
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import kotlinx.android.synthetic.main.splash_fragment.*
+import java.util.*
+
+fun Fragment.removeFullScreen() {
+    requireActivity().window.apply {
+        addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN)
+        clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    }
+}
 
 fun MainViewModel.getString(int: Int): String {
     return getApplication<Application>().resources.getString(int)
@@ -32,6 +47,22 @@ fun SplashFragment.divideTextToParts(bookList: List<Book>) {
         }
     }
     )
+}
+
+fun initAdds(context: Context) {
+    MobileAds.initialize(context) {}
+    MobileAds.setRequestConfiguration(
+        RequestConfiguration.Builder()
+            .setTestDeviceIds(Arrays.asList("ABCDEF012345"))
+            .build()
+    )
+}
+
+fun initAdvert(context: Context): AdView {
+    val adView = AdView(context)
+    adView.adSize = AdSize.LARGE_BANNER
+    adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"
+    return adView
 }
 
 //fun chunk(text: String, del: Int): List<String> {

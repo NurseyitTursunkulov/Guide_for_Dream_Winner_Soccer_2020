@@ -16,31 +16,52 @@
 package com.example.guidefordreamwinnersoccer2020.bookList
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import coil.transform.CircleCropTransformation
-import coil.transform.GrayscaleTransformation
 import com.example.guidefordreamwinnersoccer2020.MainViewModel
 import com.example.guidefordreamwinnersoccer2020.R
 import com.example.guidefordreamwinnersoccer2020.databinding.ListItemBookBinding
+import com.google.android.gms.ads.AdView
 
-/**
- * Adapter for the task list. Has a reference to the [TasksViewModel] to send actions back to it.
- */
 class TasksAdapter(private val viewModel: MainViewModel) :
-    ListAdapter<Book, TasksAdapter.ViewHolder>(TaskDiffCallback()) {
+    ListAdapter<Book, RecyclerView.ViewHolder>(TaskDiffCallback()) {
+    private val MENU_ITEM_VIEW_TYPE = 0
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    // The banner ad view type.
+    private val BANNER_AD_VIEW_TYPE = 1
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
+        when (holder) {
+            is ViewHolder -> holder.bind(viewModel, item)
+            else -> {
+                val bannerHolder = holder as AdViewHolder
+                bannerHolder.bind()
+            }
+        }
 
-        holder.bind(viewModel, item)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            MENU_ITEM_VIEW_TYPE -> ViewHolder.from(parent)
+            else -> {
+                val bannerLayoutView = LayoutInflater.from(
+                    parent.context
+                ).inflate(
+                    R.layout.banner_ad_container,
+                    parent, false
+                )
+                AdViewHolder(bannerLayoutView)
+            }
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position == 0)
+            BANNER_AD_VIEW_TYPE else MENU_ITEM_VIEW_TYPE
     }
 
     class ViewHolder private constructor(val binding: ListItemBookBinding) :
@@ -66,20 +87,13 @@ class TasksAdapter(private val viewModel: MainViewModel) :
             }
         }
     }
-}
 
-/**
- * Callback for calculating the diff between two non-null items in a list.
- *
- * Used by ListAdapter to calculate the minimum number of changes between and old list and a new
- * list that's been passed to `submitList`.
- */
-class TaskDiffCallback : DiffUtil.ItemCallback<Book>() {
-    override fun areItemsTheSame(oldItem: Book, newItem: Book): Boolean {
-        return oldItem.id == newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: Book, newItem: Book): Boolean {
-        return oldItem == newItem
+    class AdViewHolder internal constructor(view: View) :
+        RecyclerView.ViewHolder(view) {
+        var ad_view: AdView = view.findViewById(R.id.ad_viewR)
+        fun bind() {
+            val adRequest = getAdRequest()
+            ad_view.loadAd(adRequest)
+        }
     }
 }
